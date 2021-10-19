@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "yarn relay && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "relay": "yarn run relay-compiler --schema schema.graphql --src ./lib/ --watchman false $@"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.10",
@@ -15,17 +16,24 @@
     "framer-motion": "^4",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-relay": "^12.0.0",
+    "relay-runtime": "^12.0.0"
   },
   "devDependencies": {
     "@types/react": "17.0.30",
+    "@types/react-relay": "^11.0.2",
+    "@types/relay-runtime": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
+    "babel-plugin-relay": "^12.0.0",
     "eslint": "^7.23.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unused-imports": "^1.1.5",
+    "graphql": "^15.6.1",
     "prettier": "^2.4.1",
+    "relay-compiler": "^12.0.0",
     "typescript": "4.4.4"
   }
 }
