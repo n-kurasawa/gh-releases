@@ -4173,6 +4173,13 @@ regexpp@^3.1.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
+relay-compiler-language-typescript@^14.2.1:
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-14.2.1.tgz#6f6f806427506f641c91ebdfefa59c87ac86c3a6"
+  integrity sha512-c4oxy1fFWT9RMXtEfMZktuW8NT0iIfV5s6gh8K3CB1r4mUEnJDG631dCM4cnPYGbbjvSwOvteweFaxKqXbOg/w==
+  dependencies:
+    invariant "^2.2.4"
+
 relay-compiler@^12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-12.0.0.tgz#9f292d483fb871976018704138423a96c8a45439"
