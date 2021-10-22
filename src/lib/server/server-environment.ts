@@ -2,23 +2,31 @@ import { withHydrateDatetime } from "relay-nextjs/date";
 import {
   Environment,
   GraphQLResponse,
+  INetwork,
   Network,
   RecordSource,
   Store,
 } from "relay-runtime";
 
-// Relay is not prescriptive about how GraphQL requests are made.
-// This is an example showing how to request GraphQL data.
-// You should fill this in with how to make requests to your GraphQL
-// API of choice.
-import { makeGraphQLRequest } from "./my_graphql_api";
+const REACT_APP_GITHUB_AUTH_TOKEN =
+  process.env.NEXT_PUBLIC_REACT_APP_GITHUB_AUTH_TOKEN;
 
-export function createServerNetwork() {
-  return Network.create(async (text, variables) => {
-    const results = await makeGraphQLRequest(text, variables);
+export function createServerNetwork(): INetwork {
+  return Network.create(async (params, variables) => {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `bearer ${REACT_APP_GITHUB_AUTH_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: params.text,
+        variables,
+      }),
+    });
 
     const data = JSON.parse(
-      JSON.stringify(results),
+      JSON.stringify(response),
       withHydrateDatetime
     ) as GraphQLResponse;
 
@@ -27,7 +35,7 @@ export function createServerNetwork() {
 }
 
 // Optional: this function can take a token used for authentication and pass it into `createServerNetwork`.
-export function createServerEnvironment() {
+export function createServerEnvironment(): Environment {
   return new Environment({
     network: createServerNetwork(),
     store: new Store(new RecordSource()),
