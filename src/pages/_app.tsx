@@ -1,5 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
+import { RelayEnvironmentProvider } from "react-relay";
+
+import { relayEnvironment } from "lib/relay-environment";
 
 import type { AppProps } from "next/app";
 
@@ -10,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <title>github releases</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <RelayEnvironmentProvider environment={relayEnvironment}>
+        <Component {...pageProps} />
+      </RelayEnvironmentProvider>
     </ChakraProvider>
   );
 }
