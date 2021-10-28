@@ -1,5 +1,8 @@
+import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
+
+import { client } from "lib/apollo-client";
 
 import type { AppProps } from "next/app";
 
@@ -10,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <title>github releases</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </ChakraProvider>
   );
 }
