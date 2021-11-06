@@ -1,10 +1,8 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -22410,37 +22408,4 @@ export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
 export type IndexQuery = { __typename?: 'Query', viewer: { __typename?: 'User', login: string } };
 
 
-export const IndexDocument = gql`
-    query index {
-  viewer {
-    login
-  }
-}
-    `;
-
-/**
- * __useIndexQuery__
- *
- * To run a query within a React component, call `useIndexQuery` and pass it any options that fit your needs.
- * When your component renders, `useIndexQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useIndexQuery({
- *   variables: {
- *   },
- * });
- */
-export function useIndexQuery(baseOptions?: Apollo.QueryHookOptions<IndexQuery, IndexQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<IndexQuery, IndexQueryVariables>(IndexDocument, options);
-      }
-export function useIndexLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IndexQuery, IndexQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<IndexQuery, IndexQueryVariables>(IndexDocument, options);
-        }
-export type IndexQueryHookResult = ReturnType<typeof useIndexQuery>;
-export type IndexLazyQueryHookResult = ReturnType<typeof useIndexLazyQuery>;
-export type IndexQueryResult = Apollo.QueryResult<IndexQuery, IndexQueryVariables>;
+export const IndexDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"index"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"viewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"login"}}]}}]}}]} as unknown as DocumentNode<IndexQuery, IndexQueryVariables>;

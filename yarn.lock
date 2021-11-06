@@ -1325,6 +1325,17 @@
     "@graphql-tools/utils" "^8.1.1"
     tslib "~2.3.0"
 
+"@graphql-codegen/typed-document-node@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typed-document-node/-/typed-document-node-2.2.0.tgz#04f6f3d8df82fc62b3ed968cdd8a3bef62472617"
+  integrity sha512-A/owHXw3f+OLCefY3qQnfQ5nEMbqQ5U/BEufRP3K15XXXUnoF1PpLvFrN0RcWRJtuzHfByt7Z2oKnNBEKyMUGg==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^2.3.0"
+    "@graphql-codegen/visitor-plugin-common" "2.5.0"
+    auto-bind "~4.0.0"
+    change-case-all "1.0.14"
+    tslib "~2.3.0"
+
 "@graphql-codegen/typescript-operations@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-2.2.0.tgz#73bf9261a9e28708952aa74c3a0c659fb8005483"
@@ -1334,17 +1345,6 @@
     "@graphql-codegen/typescript" "^2.3.0"
     "@graphql-codegen/visitor-plugin-common" "2.5.0"
     auto-bind "~4.0.0"
-    tslib "~2.3.0"
-
-"@graphql-codegen/typescript-react-apollo@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-react-apollo/-/typescript-react-apollo-3.2.1.tgz#a11aad061d6251ab38a9c2be08968e73cfcae1eb"
-  integrity sha512-fA99uAGwPxLVd8ANbdSkZTnalmSX2ScNQY7rBTzxhnHQWlheYWj22QBpVwO3gbGwQKMpHPnmlAZS0js5C/f4lQ==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "^2.3.0"
-    "@graphql-codegen/visitor-plugin-common" "2.5.0"
-    auto-bind "~4.0.0"
-    change-case-all "1.0.14"
     tslib "~2.3.0"
 
 "@graphql-codegen/typescript@2.3.1", "@graphql-codegen/typescript@^2.3.0":
@@ -1594,7 +1594,7 @@
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
-"@graphql-typed-document-node/core@^3.0.0":
+"@graphql-typed-document-node/core@^3.0.0", "@graphql-typed-document-node/core@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"
   integrity sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==

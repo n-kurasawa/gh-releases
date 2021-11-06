@@ -1,11 +1,12 @@
+import { useQuery } from "@apollo/client";
 import { Container, Box } from "@chakra-ui/react";
 
-import { useIndexQuery } from "generated/graphql";
+import { IndexDocument } from "generated/graphql";
 
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
-  const { data, loading, error } = useIndexQuery();
+  const { data, loading, error } = useQuery(IndexDocument);
   if (loading) {
     return (
       <Container maxW="container.xl">
