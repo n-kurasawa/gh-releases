@@ -1,18 +1,11 @@
-import { useQuery, gql } from "@apollo/client";
 import { Container, Box } from "@chakra-ui/react";
+
+import { useIndexQuery } from "generated/graphql";
 
 import type { NextPage } from "next";
 
-const Query = gql`
-  query {
-    viewer {
-      login
-    }
-  }
-`;
-
 const Home: NextPage = () => {
-  const { data, loading, error } = useQuery(Query);
+  const { data, loading, error } = useIndexQuery();
   if (loading) {
     return (
       <Container maxW="container.xl">
@@ -36,7 +29,7 @@ const Home: NextPage = () => {
 
   return (
     <Container maxW="container.xl">
-      <Box p={4}>{data.viewer.login}</Box>
+      <Box p={4}>{data?.viewer.login}</Box>
     </Container>
   );
 };
