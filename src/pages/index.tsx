@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { Container, Box } from "@chakra-ui/react";
 
-import { IndexDocument } from "generated/graphql";
+import { IndexDocument } from "@/generated/graphql";
 
 import type { NextPage } from "next";
 

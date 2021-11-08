@@ -2,7 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 
-import { client } from "lib/apollo-client";
+import { client } from "@/lib/apollo-client";
 
 import type { AppProps } from "next/app";
 
