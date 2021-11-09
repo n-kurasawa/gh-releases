@@ -3,3 +3,15 @@ query index {
     login
   }
 }
+
+query repository($login: String!) {
+  repositoryOwner(login: $login) {
+    repositories(first: 10) {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}
