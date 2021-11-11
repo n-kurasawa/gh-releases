@@ -1,4 +1,5 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/dist/client/router";
 
 import {
   UserRepositoryDocument,
@@ -13,6 +14,32 @@ type StaticProps = {
   generatedAt: string;
 };
 
+const Page: NextPage<StaticProps> = ({ userRepos, err, generatedAt }) => {
+  const router = useRouter();
+  if (err) {
+    return <div>err: {err.message}</div>;
+  }
+  if (
+    router.isFallback ||
+    !userRepos?.user ||
+    !userRepos.user.repositories.nodes
+  ) {
+    return <div>loading...</div>;
+  }
+  const repos = userRepos.user.repositories.nodes.map((node) => {
+    return <li key={node?.name}>{node?.name}</li>;
+  });
+  return (
+    <>
+      <div>user: {userRepos.user.name}</div>
+      <div>
+        repos: <ul>{repos}</ul>
+      </div>
+      <div>generatedAt: {generatedAt}</div>
+    </>
+  );
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true };
 };
@@ -24,7 +51,7 @@ const propsFactory = (injects?: Partial<StaticProps>) => ({
     generatedAt: now(),
     ...injects,
   },
-  revalidate: 10,
+  // revalidate: 10,
 });
 
 export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
@@ -57,3 +84,5 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     });
   }
 };
+
+export default Page;
