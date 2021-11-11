@@ -2,7 +2,7 @@ query userRepository($login: String!) {
   user(login: $login) {
     name
     url
-    repositories(last: 20) {
+    repositories(first: 20) {
       totalCount
       nodes {
         name

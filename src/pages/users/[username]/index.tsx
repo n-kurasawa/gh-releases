@@ -1,6 +1,9 @@
+import { ListItem, UnorderedList } from "@chakra-ui/layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
+import React from "react";
 
+import { Layout } from "@/components/layout";
 import {
   UserRepositoryDocument,
   UserRepositoryQuery,
@@ -27,16 +30,16 @@ const Page: NextPage<StaticProps> = ({ userRepos, err, generatedAt }) => {
     return <div>loading...</div>;
   }
   const repos = userRepos.user.repositories.nodes.map((node) => {
-    return <li key={node?.name}>{node?.name}</li>;
+    return <ListItem key={node?.name}>{node?.name}</ListItem>;
   });
   return (
-    <>
+    <Layout>
       <div>user: {userRepos.user.name}</div>
       <div>
-        repos: <ul>{repos}</ul>
+        repos: <UnorderedList>{repos}</UnorderedList>
       </div>
       <div>generatedAt: {generatedAt}</div>
-    </>
+    </Layout>
   );
 };
 
@@ -51,7 +54,7 @@ const propsFactory = (injects?: Partial<StaticProps>) => ({
     generatedAt: now(),
     ...injects,
   },
-  // revalidate: 10,
+  revalidate: 10,
 });
 
 export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
