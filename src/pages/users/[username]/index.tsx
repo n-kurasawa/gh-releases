@@ -20,14 +20,22 @@ type StaticProps = {
 const Page: NextPage<StaticProps> = ({ userRepos, err, generatedAt }) => {
   const router = useRouter();
   if (err) {
-    return <div>err: {err.message}</div>;
+    return (
+      <Layout>
+        <div>err: {err.message}</div>
+      </Layout>
+    );
   }
   if (
     router.isFallback ||
     !userRepos?.user ||
     !userRepos.user.repositories.nodes
   ) {
-    return <div>loading...</div>;
+    return (
+      <Layout>
+        <div>loading...</div>
+      </Layout>
+    );
   }
   const repos = userRepos.user.repositories.nodes.map((node) => {
     return <ListItem key={node?.name}>{node?.name}</ListItem>;

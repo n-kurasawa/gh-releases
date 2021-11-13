@@ -1,12 +1,7 @@
 import { useQuery } from "@apollo/client";
-import {
-  Container,
-  Box,
-  Heading,
-  UnorderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Heading, UnorderedList, ListItem } from "@chakra-ui/react";
 
+import { Layout } from "@/components/layout";
 import {
   IndexDocument,
   RepositoryDocument,
@@ -20,22 +15,18 @@ const Home: NextPage<RepositoryQuery> = (props) => {
   const { data, loading, error } = useQuery(IndexDocument);
   if (loading) {
     return (
-      <Container maxW="container.xl">
-        <Box p={4}>
-          <div>loading...</div>
-        </Box>
-      </Container>
+      <Layout>
+        <div>loading...</div>
+      </Layout>
     );
   }
 
   if (error) {
     console.error(error);
     return (
-      <Container maxW="container.xl">
-        <Box p={4}>
-          <div>error</div>
-        </Box>
-      </Container>
+      <Layout>
+        <div>error</div>
+      </Layout>
     );
   }
 
@@ -44,12 +35,10 @@ const Home: NextPage<RepositoryQuery> = (props) => {
   });
 
   return (
-    <Container maxW="container.xl">
-      <Box p={4}>
-        <Heading mb={4}>{data?.viewer.login}</Heading>
-        <UnorderedList>{repos}</UnorderedList>
-      </Box>
-    </Container>
+    <Layout>
+      <Heading mb={4}>{data?.viewer.login}</Heading>
+      <UnorderedList>{repos}</UnorderedList>
+    </Layout>
   );
 };
 
