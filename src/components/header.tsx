@@ -9,7 +9,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -21,6 +20,8 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
+
+import { User } from "./user";
 
 export const WithSubnavigation: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -72,15 +73,7 @@ export const WithSubnavigation: React.FC = () => {
           direction={"row"}
           spacing={6}
         >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
-          >
-            Sign In
-          </Button>
+          <User />
         </Stack>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
