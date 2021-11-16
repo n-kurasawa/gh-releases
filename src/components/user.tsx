@@ -8,12 +8,12 @@ export const User: React.FC = () => {
   const [session] = useSession();
   return (
     <>
-      <Box>{session?.user?.name ? session.user.name : "Guest User"}</Box>
-      <Box>
-        {session?.user && typeof session.user.image === "string" && (
+      <Box mr={4}>{session?.user?.name ? session.user.name : "Guest User"}</Box>
+      {session?.user && typeof session.user.image === "string" && (
+        <Box mr={4}>
           <Avatar size={"sm"} src={session.user.image} />
-        )}
-      </Box>
+        </Box>
+      )}
       {session ? (
         <Button
           as={"a"}

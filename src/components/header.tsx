@@ -66,15 +66,9 @@ export const WithSubnavigation: React.FC = () => {
             <DesktopNav />
           </Flex>
         </Flex>
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
+        <Flex alignItems={"center"}>
           <User />
-        </Stack>
+        </Flex>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
