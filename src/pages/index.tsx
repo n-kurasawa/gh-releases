@@ -43,12 +43,19 @@ const Home: NextPage<RepositoryQuery> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps<RepositoryQuery> = async () => {
-  const { data } = await client.query({
-    query: RepositoryDocument,
-    variables: { login: "n-kurasawa" },
-  });
+  try {
+    const { data } = await client.query({
+      query: RepositoryDocument,
+      variables: { login: "n-kurasawa" },
+    });
+    return {
+      props: data,
+    };
+  } catch (err) {
+    console.log(err);
+  }
   return {
-    props: data,
+    props: {},
   };
 };
 
